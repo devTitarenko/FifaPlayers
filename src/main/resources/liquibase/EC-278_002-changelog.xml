@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd
+                   http://www.liquibase.org/xml/ns/dbchangelog-ext
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="Titarenko" id="002">
+        <comment>EC-275 Data insertion</comment>
+        <loadData tableName="Country"
+                  file="csv/country.csv"
+                  encoding="UTF-8"
+                  relativeToChangelogFile="true">
+            <column name="PK_Country_id" type="STRING"/>
+            <column name="countryName" type="STRING"/>
+        </loadData>
+        <loadData tableName="League"
+                  file="csv/league.csv"
+                  encoding="UTF-8"
+                  relativeToChangelogFile="true">
+            <column name="PK_League_id" type="NUMERIC"/>
+            <column name="leagueName" type="STRING"/>
+            <column name="FK_LeagueCountry_id" type="STRING"/>
+        </loadData>
+        <loadData tableName="Club"
+                  file="csv/club.csv"
+                  encoding="UTF-8"
+                  relativeToChangelogFile="true">
+            <column name="PK_Club_id" type="NUMERIC"/>
+            <column name="clubName" type="STRING"/>
+            <column name="FK_ClubLeague_id" type="NUMERIC"/>
+        </loadData>
+        <loadData tableName="Player"
+                  file="csv/player.csv"
+                  encoding="UTF-8"
+                  relativeToChangelogFile="true">
+            <column name="PK_Player_id" type="NUMERIC"/>
+            <column name="firstName" type="STRING"/>
+            <column name="lastName" type="STRING"/>
+            <column name="birthDate" header="birthDate" type="DATE"/>
+            <column name="costs" type="NUMERIC"/>
+            <column name="stats" type="NUMERIC"/>
+            <column name="skill" type="STRING"/>
+            <column name="position" type="STRING"/>
+            <column name="FK_PlayerClub_id" type="NUMERIC"/>
+            <column name="FK_PlayerCountry_id" type="STRING"/>
+        </loadData>
+
+    </changeSet>
+
+</databaseChangeLog>

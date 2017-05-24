@@ -1,0 +1,18 @@
+"PK_CLUB_ID","CLUBNAME","FK_CLUBLEAGUE_ID"
+10,"Arsenal",1000
+20,"Chelsea",1000
+30,"Leicester City",1000
+40,"Liverpool",1000
+50,"Manchester City",1000
+60,"Manchester United",1000
+70,"Atletico Madrid",1100
+80,"FC Barcelona",1100
+90,"Real Madrid",1100
+100,"Inter",1200
+110,"Juventus",1200
+120,"Milan",1200
+130,"Roma",1200
+140,"Borussia Dortmund",1300
+150,"FC Bayern Munchen",1300
+160,"Olympique Lyonnais",1400
+170,"Paris Saint-Germain",1400

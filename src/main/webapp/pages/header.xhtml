@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition>
+    <div class="header">
+        <h1 class="white">Fifa Players Online</h1>
+
+        <h:form>
+            <p:growl id="growl" life="5000"/>
+
+            <p:button outcome="welcome" value="Back to Welcome"/>
+
+            <p:button outcome="main" value="Show all players"/>
+
+            <p:commandButton value="Settings" title="#{msgs['header.settings']}" icon="ui-icon-gear"
+                             actionListener="#{buttonView.buttonAction}" update="growl"/>
+        </h:form>
+
+        <p:graphicImage name="img/FIFA_Logo.png"/>
+    </div><!-- .header-->
+</ui:composition>
+</html>
+
+

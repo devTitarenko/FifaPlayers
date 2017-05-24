@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd
+                   http://www.liquibase.org/xml/ns/dbchangelog-ext
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="Titarenko" id="001">
+        <comment>EC-275 Create tables: Country, League, Club and Player</comment>
+
+        <createTable tableName="Country">
+            <column name="PK_Country_id" type="CHAR(2)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="countryName" type="VARCHAR2(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="League">
+            <column name="PK_League_id" type="BIGINT(8)" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="leagueName" type="VARCHAR2(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_LeagueCountry_id" type="CHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="FK_LeagueCountry_id" baseTableName="League"
+                                 constraintName="FK_League_Country" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="PK_Country_id" referencedTableName="Country"/>
+
+        <createTable tableName="Club">
+            <column name="PK_Club_id" type="BIGINT(8)" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="clubName" type="VARCHAR2(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_ClubLeague_id" type="BIGINT(8)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="FK_ClubLeague_id" baseTableName="Club"
+                                 constraintName="FK_Club_League" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="PK_League_id" referencedTableName="League"/>
+
+        <createTable tableName="Player">
+            <column name="PK_Player_id" type="BIGINT(8)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="firstName" type="VARCHAR2(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastName" type="VARCHAR2(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birthDate" type="DATE"/>
+            <column name="costs" type="BIGINT(8)"/>
+            <column name="stats" type="BIGINT(8)"/>
+            <column name="skill" type="VARCHAR2(16)"/>
+            <column name="position" type="VARCHAR2(16)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_PlayerClub_id" type="BIGINT(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_PlayerCountry_id" type="CHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="FK_PlayerClub_id" baseTableName="Player"
+                                 constraintName="FK_Player_Club" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="PK_Club_id" referencedTableName="Club"/>
+        <addForeignKeyConstraint baseColumnNames="FK_PlayerCountry_id" baseTableName="Player"
+                                 constraintName="FK_Player_Country" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="PK_Country_id" referencedTableName="Country"/>
+    </changeSet>
+
+</databaseChangeLog>

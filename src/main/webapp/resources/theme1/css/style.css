@@ -1,0 +1,94 @@
+html {
+    height: 100%;
+}
+
+body {
+    font: 14px/18px Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    min-width: 800px;
+    max-width: 1366px;
+    margin: 0 auto;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+}
+
+/* Header
+-----------------------------------------------------------------------------*/
+.header {
+    height: 100px;
+
+    background: #8dc347; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left bottom, #8dc347, #38aeac); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left bottom, #8dc347, #38aeac); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left bottom, #8dc347, #38aeac); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to top right, #8dc347, #38aeac); /* Standard syntax (must be last) */
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* Middle
+-----------------------------------------------------------------------------*/
+.content {
+    padding: 0 0 30px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    width: 90%;
+}
+
+/* Footer
+-----------------------------------------------------------------------------*/
+.footer {
+    margin: -30px auto 0;
+    min-width: 800px;
+    max-width: 1366px;
+    height: 30px;
+    line-height: 30px;
+    background: #965c9a;
+    position: relative;
+    text-align: center;
+}
+
+.white {
+    color: white;
+}
+
+.playersTable {
+    margin-top: 40px;
+    min-width: 1150px;
+}
+
+.window {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.ui-inputfield {
+    width: 200px;
+}
+
+.cmdButton {
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.ui-widget-content{
+    border: white;
+}

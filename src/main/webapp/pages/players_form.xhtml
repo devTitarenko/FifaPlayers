@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:body>
+    <ui:composition>
+
+        <h:form id="playersForm" class="playersTable">
+            <p:commandButton value="Add player" title="#{msgs['playerList.newPlayer']}" icon="ui-icon-plusthick"
+                             oncomplete="PF('createEditDlg').show();"
+                             update="playersForm, saveUpdateForm"
+                             actionListener="#{playerService.startCreateEdit(null)}"/>
+
+            <p:panel>
+                <p:dataTable id="playersTable" value="#{playerService.list}" var="player">
+
+                    <p:column headerText="#{msgs['player.firstName']}">
+                        <h:outputText value="#{player.firstName}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msgs['player.lastName']}">
+                        <h:outputText value="#{player.lastName}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msgs['player.bithday']}">
+                        <h:outputText value="#{player.formattedBirthDate}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msgs['player.nation']}">
+                        <h:outputText value="#{player.country.countryName}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msgs['player.stats']}">
+                        <h:outputText value="#{player.stats}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msgs['player.club']}">
+                        <h:outputText value="#{player.club.clubName}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msgs['player.position']}">
+                        <h:outputText value="#{player.position}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msgs['player.skill']}">
+                        <h:outputText value="#{player.skill.name}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msgs['player.costs']}">
+                        <h:outputText value="#{player.costs}"/>
+                    </p:column>
+
+                    <p:column headerText="Edit">
+                        <p:commandButton title="#{msgs['playerList.edit']}" icon="ui-icon-pencil"
+                                         oncomplete="PF('createEditDlg').show();"
+                                         update="playersForm, saveUpdateForm"
+                                         actionListener="#{playerService.startCreateEdit(player)}"/>
+                        <p:commandButton title="#{msgs['playerList.delete']}" icon="ui-icon-trash"
+                                         update="playersTable"
+                                         actionListener="#{playerService.deletePlayer(player)}"/>
+                    </p:column>
+
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+        <p:dialog id="createEditDlg" header="#{msgs['createEditDlg.title']}" widgetVar="createEditDlg"
+                  modal="true" closable="false" resizable="false" width="650" height="420">
+            <ui:include src="save_update_player.xhtml"/>
+        </p:dialog>
+
+    </ui:composition>
+</h:body>
+</html>
