@@ -1,4 +1,4 @@
-package com.eisgroup.fifa_players.validators;
+package com.titarenko.fifa_players.validators;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -22,7 +22,7 @@ public class StatsValidator implements Validator {
         Pattern pattern = Pattern.compile("^[0-9]{4}$");
         Matcher matcher = pattern.matcher(inputString);
         if (!matcher.matches()) {
-            ResourceBundle resourceBundle = PropertyResourceBundle.getBundle("messages_en");
+            ResourceBundle resourceBundle = PropertyResourceBundle.getBundle("messages/messages_en");
 
             throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "",
                     resourceBundle.getString("Error.notValidStats")));

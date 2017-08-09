@@ -1,11 +1,11 @@
-import com.eisgroup.fifa_players.dao.PlayerDao;
+import com.titarenko.fifa_players.repository.PlayerRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class Man {
+public class Main {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-        PlayerDao playerDao = context.getBean(PlayerDao.class);
-        playerDao.list().forEach(System.out::println);
+        PlayerRepository repository = context.getBean(PlayerRepository.class);
+        repository.findAll().forEach(System.out::println);
     }
 }

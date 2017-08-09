@@ -1,4 +1,4 @@
-package com.eisgroup.fifa_players.model;
+package com.titarenko.fifa_players.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,14 +12,14 @@ import javax.persistence.*;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class League {
+public class Club {
     @Id
-    @Column(name="PK_League_id")
-    private Integer leagueId;
+    @Column(name = "PK_Club_id")
+    private Integer clubId;
 
-    private String leagueName;
+    private String clubName;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn (name = "FK_LeagueCountry_id")
-    private Country country;
+    @JoinColumn(name = "FK_ClubLeague_id")
+    private League league;
 }

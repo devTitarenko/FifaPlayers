@@ -1,7 +1,7 @@
-package com.eisgroup.fifa_players.service;
+package com.titarenko.fifa_players.service;
 
-import com.eisgroup.fifa_players.dao.ClubDao;
-import com.eisgroup.fifa_players.model.Club;
+import com.titarenko.fifa_players.model.Club;
+import com.titarenko.fifa_players.repository.ClubRepository;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,14 +18,14 @@ import java.util.List;
 public class ClubService {
 
     @Autowired
-    private ClubDao clubDao;
+    private ClubRepository clubRepository;
 
-    private List<Club> clubList;
+    private Iterable<Club> clubList;
 
     @PostConstruct
     private void init() {
-        clubList = clubDao.list();
-        sortedList(clubList);
+        clubList = clubRepository.findAll();
+//        sortedList(clubList);
     }
 
     public void sortedList(List<Club> clubList) {

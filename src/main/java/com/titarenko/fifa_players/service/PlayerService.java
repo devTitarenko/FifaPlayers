@@ -1,9 +1,9 @@
-package com.eisgroup.fifa_players.service;
+package com.titarenko.fifa_players.service;
 
-import com.eisgroup.fifa_players.dao.PlayerDao;
-import com.eisgroup.fifa_players.model.Player;
-import com.eisgroup.fifa_players.model.Position;
-import com.eisgroup.fifa_players.model.Skill;
+import com.titarenko.fifa_players.model.Player;
+import com.titarenko.fifa_players.model.Position;
+import com.titarenko.fifa_players.model.Skill;
+import com.titarenko.fifa_players.repository.PlayerRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +25,16 @@ import java.util.List;
 public class PlayerService {
 
     @Autowired
-    private PlayerDao playerDao;
+    private PlayerRepository playerRepository;
 
-    private List<Player> list;
+    private Iterable<Player> list;
 
     private Player player;
 
     @PostConstruct
     private void init() {
-        list = playerDao.list();
-        sortedList(list);
+        list = playerRepository.findAll();
+//        sortedList(list);
     }
 
     public void startCreateEdit(Player player) {
@@ -70,7 +70,7 @@ public class PlayerService {
     }
 
     public void savePlayer() {
-        playerDao.saveOrUpdate(player);
+        playerRepository.save(player);
         init();
     }
 
@@ -83,7 +83,7 @@ public class PlayerService {
     }
 
     public void deletePlayer(Player player) {
-        playerDao.delete(player);
+        playerRepository.delete(player);
         init();
     }
 }

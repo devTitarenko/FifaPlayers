@@ -1,7 +1,7 @@
-package com.eisgroup.fifa_players.service.converters;
+package com.titarenko.fifa_players.service.converters;
 
-import com.eisgroup.fifa_players.dao.CountryDao;
-import com.eisgroup.fifa_players.model.Country;
+import com.titarenko.fifa_players.model.Country;
+import com.titarenko.fifa_players.repository.CountryRepository;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,11 +17,11 @@ import javax.faces.convert.FacesConverter;
 public class CountryConverter implements Converter {
 
     @Autowired
-    private CountryDao countryDao;
+    private CountryRepository countryRepository;
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        return countryDao.get(value);
+        return countryRepository.findOne(value);
     }
 
     @Override

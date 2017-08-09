@@ -1,7 +1,7 @@
-package com.eisgroup.fifa_players.service.converters;
+package com.titarenko.fifa_players.service.converters;
 
-import com.eisgroup.fifa_players.dao.ClubDao;
-import com.eisgroup.fifa_players.model.Club;
+import com.titarenko.fifa_players.model.Club;
+import com.titarenko.fifa_players.repository.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,11 +15,11 @@ import javax.faces.convert.FacesConverter;
 public class ClubConverter implements Converter {
 
     @Autowired
-    private ClubDao clubDao;
+    private ClubRepository clubRepository;
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        return clubDao.get(Integer.decode(value));
+        return clubRepository.findOne(Integer.decode(value));
     }
 
     @Override

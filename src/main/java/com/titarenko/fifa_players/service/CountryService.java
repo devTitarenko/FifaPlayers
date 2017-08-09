@@ -1,7 +1,7 @@
-package com.eisgroup.fifa_players.service;
+package com.titarenko.fifa_players.service;
 
-import com.eisgroup.fifa_players.dao.CountryDao;
-import com.eisgroup.fifa_players.model.Country;
+import com.titarenko.fifa_players.model.Country;
+import com.titarenko.fifa_players.repository.CountryRepository;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,14 +18,14 @@ import java.util.List;
 public class CountryService {
 
     @Autowired
-    private CountryDao countryDao;
+    private CountryRepository countryRepository;
 
-    private List<Country> countryList;
+    private Iterable<Country> countryList;
 
     @PostConstruct
     private void init() {
-        countryList = countryDao.list();
-        sortedList(countryList);
+        countryList = countryRepository.findAll();
+//        sortedList(countryList);
     }
 
     public void sortedList(List<Country> countryList) {

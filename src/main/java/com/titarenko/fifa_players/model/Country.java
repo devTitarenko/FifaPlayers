@@ -1,4 +1,4 @@
-package com.eisgroup.fifa_players.model;
+package com.titarenko.fifa_players.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.eisgroup.fifa_players.service;
+package com.titarenko.fifa_players.service;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;

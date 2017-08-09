@@ -1,4 +1,4 @@
-package com.eisgroup.fifa_players.validators;
+package com.titarenko.fifa_players.validators;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -16,7 +16,7 @@ public class LatinNumberSpecialValidator implements Validator{
 
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-        ResourceBundle resourceBundle = PropertyResourceBundle.getBundle("messages_en");
+        ResourceBundle resourceBundle = PropertyResourceBundle.getBundle("messages/messages_en");
 
         String inputString = (String) value;
         if (inputString == null)
